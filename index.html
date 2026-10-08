@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Amour ❤️</title>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =====================================================
+           CORES - PRETO E DOURADO PURO
+        ===================================================== */
+        :root {
+            --preto: #000000;
+            --preto-suave: #0a0a0a;
+            --preto-card: #0d0d0d;
+            --dourado: #d4af37;
+            --dourado-claro: #f0d97a;
+            --dourado-escuro: #a8842a;
+            --branco: #ffffff;
+            --cinza: #b8b8b8;
+            --cinza-claro: #e0e0e0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--preto);
+            color: var(--branco);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .convite-container {
+            width: 100%;
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+        }
+
+        #progressBar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 0%; height: 3px;
+            background: linear-gradient(90deg, var(--dourado-escuro), var(--dourado), var(--dourado-claro));
+            z-index: 9999;
+            box-shadow: 0 0 10px rgba(212, 175, 55, .8);
+        }
+
+        .coracao {
+            position: fixed;
+            bottom: -50px;
+            color: rgba(212, 175, 55, .25);
+            font-size: 16px;
+            pointer-events: none;
+            animation: subir 14s linear infinite;
+            z-index: 1;
+        }
+        .coracao:nth-child(1) { left: 15%; animation-delay: 0s; }
+        .coracao:nth-child(2) { left: 35%; animation-delay: 4s; }
+        .coracao:nth-child(3) { left: 60%; animation-delay: 8s; }
+        .coracao:nth-child(4) { left: 80%; animation-delay: 2s; }
+        .coracao:nth-child(5) { left: 50%; animation-delay: 10s; }
+
+        @keyframes subir {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            15% { opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--preto);
+            padding: 40px 20px;
+        }
+
+        .hero-conteudo {
+            position: relative;
+            z-index: 5;
+            max-width: 500px;
+            animation: aparecer 2s ease;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ornamento {
+            color: var(--dourado);
+            font-size: 1rem;
+            letter-spacing: 18px;
+            margin-bottom: 35px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .texto-pequeno {
+            color: var(--dourado);
+            font-size: 0.7rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: clamp(2.2rem, 7vw, 3.4rem);
+            line-height: 1.25;
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 .dourado-claro {
+            color: var(--dourado-claro);
+            font-weight: 600;
+        }
+
+        .linha-decorativa {
+            width: 60px;
+            height: 1px;
+            margin: 30px auto;
+            background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+        }
+
+        .hero-frase {
+            color: var(--cinza-claro);
+            font-size: 1rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            margin-top: 15px;
+            line-height: 1.9;
+            font-weight: 400;
+        }
+
+        .data {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 10px 32px;
+            border: none;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 50px;
+            color: var(--dourado);
+            letter-spacing: 6px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--dourado);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            z-index: 6;
+        }
+
+        @keyframes bounce {
+            0%,100% { transform: translate(-50%,0); }
+            50% { transform: translate(-50%,10px); }
+        }
+
+        .secao {
+            position: relative;
+            z-index: 3;
+            padding: 70px 0;
+        }
+
+        .titulo {
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: 1.9rem;
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: var(--cinza);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        .card-convite {
+            background: var(--preto-card);
+            border: none;
+            border-radius: 16px;
+            padding: 30px 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,.8);
+        }
+
+        .carousel {
+            border-radius: 14px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 15px 40px rgba(0,0,0,.7);
+        }
+
+        .carousel-item {
+            height: 420px;
+            background: #000;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .9;
+            transition: transform 7s ease;
+        }
+
+        .carousel-item.active img {
+            transform: scale(1.05);
+        }
+
+        .carousel-control-prev, .carousel-control-next { width: 12%; }
+
+        .carousel-indicators button {
+            width: 7px !important;
+            height: 7px !important;
+            border-radius: 50%;
+            background-color: var(--dourado);
+            opacity: .4;
+        }
+        .carousel-indicators button.active { opacity: 1; }
+
+        .carta {
+            margin-top: 50px;
+            padding: 35px 28px;
+            position: relative;
+            background: linear-gradient(160deg, #0a0a0a, #111111);
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 20px 50px rgba(0,0,0,.7);
+        }
+
+        .carta::before {
+            content: "❤";
+            position: absolute;
+            top: 15px; right: 20px;
+            color: rgba(212, 175, 55, .1);
+            font-size: 4rem;
+        }
+
+        .carta-texto {
+            max-width: 520px;
+            margin: auto;
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--cinza-claro);
+            text-align: justify;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        .carta-texto p { margin-bottom: 25px; }
+
+        .destaque {
+            color: var(--dourado);
+            font-weight: 600;
+        }
+
+        .citacao {
+            margin: 40px 0;
+            padding: 28px 20px;
+            text-align: center;
+            border-top: none;
+            border-bottom: none;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--dourado);
+            font-style: italic;
+            line-height: 1.9;
+        }
+
+        .assinatura {
+            text-align: center;
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: none;
+        }
+
+        .assinatura .nomes {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--dourado);
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .assinatura .data-final {
+            color: var(--cinza);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-size: .7rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        .coracao-pulsante {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: var(--dourado);
+            animation: pulsar 1.4s infinite;
+        }
+
+        @keyframes pulsar {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+
+        .video-item {
+            border-radius: 14px;
+            overflow: hidden;
+            border: none;
+            background: #000;
+            box-shadow: 0 20px 50px rgba(0,0,0,.7);
+            margin-bottom: 25px;
+            transition: transform .4s ease, box-shadow .4s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, .15);
+        }
+
+        .video-item video { display: block; width: 100%; }
+
+        /* =====================================================
+           JOGOS
+        ===================================================== */
+        .jogo-card {
+            background: var(--preto-card);
+            border-radius: 16px;
+            padding: 25px 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,.7);
+            margin-bottom: 25px;
+        }
+
+        .jogo-titulo {
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .jogo-desc {
+            text-align: center;
+            color: var(--cinza);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* --- JOGO DA MEMÓRIA --- */
+        .memoria-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .memoria-carta {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            background: transparent;
+        }
+
+        .memoria-carta.virada {
+            transform: rotateY(180deg);
+        }
+
+        .memoria-carta .frente,
+        .memoria-carta .verso {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        .memoria-carta .verso {
+            background: linear-gradient(135deg, var(--dourado-escuro), var(--dourado));
+            font-size: 1.5rem;
+            color: var(--preto);
+        }
+
+        .memoria-carta .frente {
+            background: var(--preto-suave);
+            transform: rotateY(180deg);
+            overflow: hidden;
+        }
+
+        .memoria-carta .frente img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .memoria-carta .frente .emoji {
+            font-size: 2.5rem;
+        }
+
+        .memoria-carta.encontrada {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .memoria-carta.encontrada .frente {
+            box-shadow: 0 0 15px var(--dourado);
+        }
+
+        .memoria-status {
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: 0.9rem;
+        }
+
+        /* --- QUIZ --- */
+        .quiz-pergunta {
+            font-size: 1.1rem;
+            color: var(--branco);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 500;
+            min-height: 50px;
+        }
+
+        .quiz-opcoes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-opcao {
+            background: var(--preto-suave);
+            color: var(--cinza-claro);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .quiz-opcao:hover {
+            background: #1a1a1a;
+            color: var(--dourado);
+        }
+
+        .quiz-opcao.correta {
+            background: rgba(212, 175, 55, 0.3);
+            color: var(--dourado-claro);
+            font-weight: 600;
+        }
+
+        .quiz-opcao.errada {
+            background: rgba(255, 50, 50, 0.2);
+            color: #ff6b6b;
+        }
+
+        .quiz-resultado {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: 1.1rem;
+            margin-top: 15px;
+            min-height: 30px;
+        }
+
+        .quiz-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, var(--dourado-claro), var(--dourado), var(--dourado-escuro));
+            color: var(--preto);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- CAÇA-PALAVRAS --- */
+        .caca-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .caca-celula {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--preto-suave);
+            border-radius: 6px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--cinza-claro);
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+
+        .caca-celula.selecionada {
+            background: rgba(212, 175, 55, 0.3);
+            color: var(--dourado-claro);
+            font-weight: 700;
+        }
+
+        .caca-celula.encontrada {
+            background: var(--dourado);
+            color: var(--preto);
+            font-weight: 700;
+        }
+
+        .caca-lista {
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .caca-lista span {
+            display: inline-block;
+            margin: 3px 5px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            font-size: 0.75rem;
+        }
+
+        .caca-lista span.riscada {
+            text-decoration: line-through;
+            opacity: 0.4;
+        }
+
+        /* --- JOGO DA FORCA --- */
+        .forca-desenho {
+            text-align: center;
+            font-size: 2.5rem;
+            letter-spacing: 8px;
+            color: var(--dourado);
+            margin: 15px 0;
+            font-family: 'Cinzel', serif;
+            min-height: 50px;
+        }
+
+        .forca-letras {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            margin: 15px 0;
+        }
+
+        .forca-letra {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--preto-suave);
+            border: none;
+            border-radius: 8px;
+            color: var(--cinza-claro);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .forca-letra:hover {
+            background: #1a1a1a;
+            color: var(--dourado);
+        }
+
+        .forca-letra.usada {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .forca-letra.correta {
+            background: rgba(212, 175, 55, 0.3);
+            color: var(--dourado-claro);
+        }
+
+        .forca-letra.errada {
+            background: rgba(255, 50, 50, 0.2);
+            color: #ff6b6b;
+        }
+
+        .forca-status {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .forca-dica {
+            text-align: center;
+            color: var(--cinza);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* --- QUEBRA-CABEÇA --- */
+        .puzzle-container {
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            background: var(--preto-suave);
+            padding: 5px;
+            border-radius: 12px;
+        }
+
+        .puzzle-peca {
+            aspect-ratio: 1;
+            border-radius: 6px;
+            cursor: pointer;
+            background-size: 300% 300%;
+            background-repeat: no-repeat;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .puzzle-peca:hover {
+            transform: scale(0.97);
+        }
+
+        .puzzle-peca.selecionada {
+            outline: 2px solid var(--dourado);
+            transform: scale(1.03);
+        }
+
+        .puzzle-status {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-size: 0.9rem;
+            margin-top: 12px;
+        }
+
+        /* --- BOTÃO MÚSICA --- */
+        .controle-musica {
+            position: fixed;
+            bottom: 22px; right: 22px;
+            width: 52px; height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--preto);
+            border: none;
+            color: var(--dourado);
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, .25);
+            transition: .3s;
+            font-size: 1.1rem;
+        }
+
+        .controle-musica:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(212, 175, 55, .5);
+        }
+
+        .icone { display: none; }
+        .icone.ativo { display: block; }
+
+        .btn-dourado {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 34px;
+            border-radius: 50px;
+            color: var(--preto);
+            text-decoration: none;
+            border: none;
+            background: linear-gradient(135deg, var(--dourado-claro), var(--dourado), var(--dourado-escuro));
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: .4s;
+        }
+
+        .btn-dourado:hover {
+            color: var(--preto);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, .4);
+        }
+
+        .revelar {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .revelar.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 2.3rem; }
+            .hero-frase { font-size: 0.95rem; }
+            .carousel-item { height: 340px; }
+            .card-convite { padding: 20px 18px; }
+            .carta { padding: 25px 18px; }
+            .carta-texto { font-size: 0.95rem; text-align: left; }
+            .titulo { font-size: 1.6rem; }
+            .assinatura .nomes { font-size: 1.15rem; }
+            .controle-musica { width: 46px; height: 46px; right: 12px; bottom: 12px; }
+            .memoria-grid { gap: 6px; }
+            .caca-grid { gap: 3px; }
+            .caca-celula { font-size: 0.7rem; }
+            .forca-letra { width: 30px; height: 30px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="progressBar"></div>
+
+<div class="coracao">❤</div>
+<div class="coracao">♥</div>
+<div class="coracao">❤</div>
+<div class="coracao">♥</div>
+<div class="coracao">❤</div>
+
+<audio id="musicaFundo" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="controle-musica" id="btnMusica" onclick="toggleMusica()" title="Música">
+    <span class="icone ativo" id="iconePlay">
+        <i class="bi bi-music-note-beamed"></i>
+    </span>
+    <span class="icone" id="iconePause">
+        <i class="bi bi-pause-fill"></i>
+    </span>
+</div>
+
+<div class="convite-container">
+
+    <section class="hero">
+        <div class="hero-conteudo">
+            <div class="ornamento">✦ ❤ ✦</div>
+            <p class="texto-pequeno">Um presente feito com amor</p>
+
+            <h1>
+                Happy<br>
+                <span class="dourado-claro">Birthday</span><br>
+                Lov
+            </h1>
+
+            <div class="linha-decorativa"></div>
+
+            <p class="hero-frase">
+                "25 anos de vida, 8 anos de nós,<br>
+                uma história escrita por Deus."
+            </p>
+
+            <div class="data">08 · 10 · 2026</div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
+    </section>
+
+    <main>
+
+        <section class="secao revelar" id="historia">
+            <div class="card-convite">
+                <h2 class="titulo">Nossa Jornada</h2>
+                <p class="subtitulo">
+                    Cada fotografia guarda um pedaço da nossa história ❤️
+                </p>
+
+                <div id="carrosselFotos" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="0" class="active" aria-label="Foto 1"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="1" aria-label="Foto 2"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="2" aria-label="Foto 3"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="3" aria-label="Foto 4"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="4" aria-label="Foto 5"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="5" aria-label="Foto 6"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="6" aria-label="Foto 7"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="7" aria-label="Foto 8"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="8" aria-label="Foto 9"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="9" aria-label="Foto 10"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="10" aria-label="Foto 11"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="11" aria-label="Foto 12"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="12" aria-label="Foto 13"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="13" aria-label="Foto 14"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="14" aria-label="Foto 15"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="15" aria-label="Foto 16"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="16" aria-label="Foto 17"></button>
+                        <button type="button" data-bs-target="#carrosselFotos" data-bs-slide-to="17" aria-label="Foto 18"></button>
+                    </div>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="foto1.jpg" alt="Momento 1" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto2.jpg" alt="Momento 2" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto3.jpg" alt="Momento 3" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto4.jpg" alt="Momento 4" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto5.jpg" alt="Momento 5" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto6.jpg" alt="Momento 6" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto7.jpg" alt="Momento 7" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto8.jpg" alt="Momento 8" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto9.jpg" alt="Momento 9" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto10.jpg" alt="Momento 10" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto11.jpg" alt="Momento 11" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto12.jpg" alt="Momento 12" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto13.jpg" alt="Momento 13" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto14.jpg" alt="Momento 14" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto15.jpg" alt="Momento 15" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto16.jpg" alt="Momento 16" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto17.jpg" alt="Momento 17" loading="lazy"></div>
+                        <div class="carousel-item"><img src="foto18.jpg" alt="Momento 18" loading="lazy"></div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carrosselFotos" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carrosselFotos" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao revelar">
+            <div class="carta">
+                <h2 class="titulo">A Nossa História</h2>
+                <p class="subtitulo">
+                    Escrita com amor, fé e muitos momentos inesquecíveis ❤️
+                </p>
+
+                <div class="carta-texto">
+                    <p>
+                        <strong class="destaque">Feliz aniversário, minha vida!</strong>
+                        Hoje o mundo celebra os teus 25 anos, mas eu celebro a sorte imensa de ter você ao meu lado.
+                        Desejo-lhe tudo de bom nesta vida, meu amor.
+                        Que Deus continue abençoando cada passo teu, cada sonho e cada conquista que ainda está por vir.
+                    </p>
+
+                    <p>
+                        Olhando para trás, vejo como a mão de Deus foi perfeita na nossa história.
+                        <span class="destaque">Tudo começou na catequese</span>
+                        — um simples pedido para ver os meus desenhos, e ali, sem que a gente percebesse,
+                        o nosso destino estava sendo traçado.
+                        Quem diria que aquela menina dos desenhos e aquele menino curioso
+                        estariam aqui hoje, celebrando 8 anos de amor, cumplicidade e fé?
+                    </p>
+
+                    <p>
+                        E como não lembrar da nossa primeira vez juntos, dormindo lado a lado na
+                        <span class="destaque">peregrinação para Nossa Senhora de Fátima, em Namaacha</span>?
+                        Foi lá que entendemos que não tinha como ser diferente.
+                        Que o nosso amor era maior do que qualquer dúvida e maior do que qualquer medo.
+                        Nossa Senhora intercedeu por nós, e Deus escreveu a mais linda das histórias.
+                    </p>
+
+                    <div class="citacao">
+                        "Deus gosta de nós."
+                        <br>
+                        E a prova disso é que Ele nos deu o nosso maior presente:
+                        <strong>a nossa filha Camila. ❤️</strong>
+                    </div>
+
+                    <p>
+                        Hoje, olhando para a nossa filha, vejo o quanto somos abençoados.
+                        A Camila é a prova viva do amor que construímos, do carinho que plantamos e da fé que nos sustenta.
+                        Ela é o nosso coração batendo fora do peito, a razão de tantos sorrisos, a nossa maior alegria.
+                    </p>
+
+                    <p>
+                        Obrigado por cada dia, por cada sorriso, por cada vez que me estendeu a mão quando eu mais precisei.
+                        Obrigado por ser meu companheiro, meu amigo e meu amor.
+                        Obrigado por me escolher todos os dias, mesmo nos dias difíceis.
+                        Você é o meu porto seguro, a minha paz em meio ao caos, a minha oração respondida.
+                    </p>
+
+                    <p>
+                        Que este novo ano de vida seja repleto de saúde, prosperidade, alegrias e muitos sonhos realizados.
+                        Que a gente continue crescendo juntos, de mãos dadas, com Deus no comando e a Camila iluminando os nossos dias.
+                        Que nunca nos falte fé, amor e a certeza de que fomos feitos um para o outro.
+                    </p>
+
+                    <p>
+                        Eu e a Camila te desejamos um
+                        <span class="destaque">feliz aniversário, amor.</span>
+                        Que a tua vida seja tão linda quanto a tua alma,
+                        e que a gente possa celebrar muitos e muitos anos juntos.
+                        <strong class="destaque">Te amamos mais do que palavras podem expressar. ❤️</strong>
+                    </p>
+                </div>
+
+                <div class="assinatura">
+                    <p class="nomes">
+                        Com todo o nosso amor,
+                        <br>
+                        Eu e Camila
+                    </p>
+                    <p class="data-final">08 de Outubro de 2026</p>
+                    <span class="coracao-pulsante">❤️</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             JOGOS
+        ====================================================== -->
+        <section class="secao revelar">
+            <h2 class="titulo">Nossos Jogos</h2>
+            <p class="subtitulo">Um pouco de diversão para celebrar ❤️</p>
+
+            <!-- ===== JOGO DA MEMÓRIA ===== -->
+            <div class="jogo-card">
+                <h3 class="jogo-titulo">🧠 Jogo da Memória</h3>
+                <p class="jogo-desc">Encontre os pares das nossas fotos</p>
+                <div class="memoria-grid" id="memoriaGrid"></div>
+                <div class="memoria-status" id="memoriaStatus">Tentativas: 0 | Pares: 0/6</div>
+                <button class="quiz-btn" onclick="reiniciarMemoria()">Reiniciar Jogo</button>
+            </div>
+
+            <!-- ===== QUIZ DO AMOR ===== -->
+            <div class="jogo-card">
+                <h3 class="jogo-titulo">💕 Quiz do Amor</h3>
+                <p class="jogo-desc">Quanto você conhece a nossa história?</p>
+                <div class="quiz-pergunta" id="quizPergunta">Carregando...</div>
+                <div class="quiz-opcoes" id="quizOpcoes"></div>
+                <div class="quiz-resultado" id="quizResultado"></div>
+                <button class="quiz-btn" onclick="reiniciarQuiz()">Reiniciar Quiz</button>
+            </div>
+
+            <!-- ===== CAÇA-PALAVRAS ===== -->
+            <div class="jogo-card">
+                <h3 class="jogo-titulo">🔍 Caça-Palavras</h3>
+                <p class="jogo-desc">Encontre as palavras escondidas</p>
+                <div class="caca-grid" id="cacaGrid"></div>
+                <div class="caca-lista" id="cacaLista"></div>
+                <button class="quiz-btn" onclick="reiniciarCaca()">Reiniciar Jogo</button>
+            </div>
+
+            <!-- ===== JOGO DA FORCA ===== -->
+            <div class="jogo-card">
+                <h3 class="jogo-titulo">🎯 Jogo da Forca</h3>
+                <p class="jogo-desc">Adivinhe a palavra relacionada à nossa história</p>
+                <div class="forca-dica" id="forcaDica"></div>
+                <div class="forca-desenho" id="forcaDesenho"></div>
+                <div class="forca-letras" id="forcaLetras"></div>
+                <div class="forca-status" id="forcaStatus">Erros: 0/6</div>
+                <button class="quiz-btn" onclick="reiniciarForca()">Reiniciar Jogo</button>
+            </div>
+
+            <!-- ===== QUEBRA-CABEÇA ===== -->
+            <div class="jogo-card">
+                <h3 class="jogo-titulo">🧩 Quebra-Cabeça</h3>
+                <p class="jogo-desc">Monte a nossa foto</p>
+                <div class="puzzle-container">
+                    <div class="puzzle-grid" id="puzzleGrid"></div>
+                    <div class="puzzle-status" id="puzzleStatus">Clique nas peças para trocar de posição</div>
+                </div>
+                <button class="quiz-btn" onclick="reiniciarPuzzle()">Reiniciar Jogo</button>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             VÍDEOS
+        ====================================================== -->
+        <section class="secao revelar">
+            <h2 class="titulo">Nossos Vídeos</h2>
+            <p class="subtitulo">Porque alguns momentos merecem ser revividos ❤️</p>
+
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="video1.mp4" type="video/mp4">
+                    O seu navegador não suporta vídeo.
+                </video>
+            </div>
+
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="video2.mp4" type="video/mp4">
+                    O seu navegador não suporta vídeo.
+                </video>
+            </div>
+        </section>
+
+        <section class="text-center pb-5 revelar">
+            <div class="linha-decorativa"></div>
+            <p class="text-secondary fst-italic mb-4" style="color: var(--cinza) !important; font-family: 'Cormorant Garamond', serif;">
+                E esta história...
+                <br>
+                ainda está apenas começando. ❤️
+            </p>
+            <a href="index.html" class="btn-dourado">
+                <i class="bi bi-heart-fill"></i>
+                Voltar ao Início
+            </a>
+        </section>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* =========================================================
+   BARRA DE PROGRESSO
+========================================================= */
+window.addEventListener("scroll", function() {
+    const scrollTop = document.documentElement.scrollTop;
+    const altura = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progresso = (scrollTop / altura) * 100;
+    document.getElementById("progressBar").style.width = progresso + "%";
+});
+
+/* =========================================================
+   ANIMAÇÃO AO FAZER SCROLL
+========================================================= */
+const elementos = document.querySelectorAll(".revelar");
+const observador = new IntersectionObserver(
+    function(entries) {
+        entries.forEach(function(entry) {
+            if(entry.isIntersecting) {
+                entry.target.classList.add("visivel");
+            }
+        });
+    },
+    { threshold: 0.15 }
+);
+elementos.forEach(function(elemento) {
+    observador.observe(elemento);
+});
+
+/* =========================================================
+   MÚSICA
+========================================================= */
+const musica = document.getElementById("musicaFundo");
+const iconePlay = document.getElementById("iconePlay");
+const iconePause = document.getElementById("iconePause");
+
+musica.volume = 0.35;
+
+window.addEventListener("load", function() {
+    musica.play()
+        .then(function() {
+            iconePlay.classList.remove("ativo");
+            iconePause.classList.add("ativo");
+        })
+        .catch(function() {
+            console.log("Autoplay bloqueado pelo navegador.");
+        });
+});
+
+function toggleMusica() {
+    if(musica.paused) {
+        musica.play();
+        iconePlay.classList.remove("ativo");
+        iconePause.classList.add("ativo");
+    } else {
+        musica.pause();
+        iconePause.classList.remove("ativo");
+        iconePlay.classList.add("ativo");
+    }
+}
+
+/* =========================================================
+   JOGO DA MEMÓRIA
+========================================================= */
+const emojisMemoria = ['❤️', '🌹', '💍', '👶', '🏖️', '🙏'];
+let cartasMemoria = [];
+let viradas = [];
+let tentativas = 0;
+let paresEncontrados = 0;
+let bloqueado = false;
+
+function iniciarMemoria() {
+    cartasMemoria = [...emojisMemoria, ...emojisMemoria];
+    cartasMemoria.sort(() => Math.random() - 0.5);
+    
+    const grid = document.getElementById('memoriaGrid');
+    grid.innerHTML = '';
+    viradas = [];
+    tentativas = 0;
+    paresEncontrados = 0;
+    bloqueado = false;
+    
+    cartasMemoria.forEach((emoji, index) => {
+        const carta = document.createElement('div');
+        carta.className = 'memoria-carta';
+        carta.dataset.emoji = emoji;
+        carta.dataset.index = index;
+        
+        carta.innerHTML = `
+            <div class="verso">?</div>
+            <div class="frente"><span class="emoji">${emoji}</span></div>
+        `;
+        
+        carta.addEventListener('click', () => virarCarta(carta));
+        grid.appendChild(carta);
+    });
+    
+    atualizarStatusMemoria();
+}
+
+function virarCarta(carta) {
+    if (bloqueado || carta.classList.contains('virada') || carta.classList.contains('encontrada')) return;
+    
+    carta.classList.add('virada');
+    viradas.push(carta);
+    
+    if (viradas.length === 2) {
+        tentativas++;
+        atualizarStatusMemoria();
+        
+        if (viradas[0].dataset.emoji === viradas[1].dataset.emoji) {
+            viradas[0].classList.add('encontrada');
+            viradas[1].classList.add('encontrada');
+            paresEncontrados++;
+            viradas = [];
+            atualizarStatusMemoria();
+            
+            if (paresEncontrados === 6) {
+                setTimeout(() => {
+                    alert('🎉 Parabéns! Você encontrou todos os pares! ❤️');
+                }, 500);
+            }
+        } else {
+            bloqueado = true;
+            setTimeout(() => {
+                viradas[0].classList.remove('virada');
+                viradas[1].classList.remove('virada');
+                viradas = [];
+                bloqueado = false;
+            }, 800);
+        }
+    }
+}
+
+function atualizarStatusMemoria() {
+    document.getElementById('memoriaStatus').textContent = 
+        `Tentativas: ${tentativas} | Pares: ${paresEncontrados}/6`;
+}
+
+function reiniciarMemoria() {
+    iniciarMemoria();
+}
+
+iniciarMemoria();
+
+/* =========================================================
+   QUIZ DO AMOR
+========================================================= */
+const perguntasQuiz = [
+    {
+        pergunta: "Onde nos conhecemos?",
+        opcoes: ["Na escola", "Na catequese", "Na praia", "No trabalho"],
+        correta: 1
+    },
+    {
+        pergunta: "O que você pediu para ver no nosso primeiro encontro?",
+        opcoes: ["Meu caderno de desenhos", "Meu telefone", "Minha mochila", "Meu livro"],
+        correta: 0
+    },
+    {
+        pergunta: "Em que peregrinação dormimos juntos pela primeira vez?",
+        opcoes: ["Fátima em Namaacha", "Aparecida", "Lourdes", "Jerusalém"],
+        correta: 0
+    },
+    {
+        pergunta: "Qual é o nome da nossa filha?",
+        opcoes: ["Camila", "Carla", "Cristina", "Carolina"],
+        correta: 0
+    },
+    {
+        pergunta: "Quantos anos estamos juntos?",
+        opcoes: ["5 anos", "6 anos", "8 anos", "10 anos"],
+        correta: 2
+    }
+];
+
+let perguntaAtual = 0;
+
+function iniciarQuiz() {
+    perguntaAtual = 0;
+    document.getElementById('quizResultado').textContent = '';
+    mostrarPergunta();
+}
+
+function mostrarPergunta() {
+    if (perguntaAtual >= perguntasQuiz.length) {
+        document.getElementById('quizPergunta').textContent = '🎉 Quiz concluído! Você conhece bem a nossa história! ❤️';
+        document.getElementById('quizOpcoes').innerHTML = '';
+        document.getElementById('quizResultado').textContent = 'Obrigado por participar! ❤️';
+        return;
+    }
+    
+    const p = perguntasQuiz[perguntaAtual];
+    document.getElementById('quizPergunta').textContent = p.pergunta;
+    
+    const opcoesDiv = document.getElementById('quizOpcoes');
+    opcoesDiv.innerHTML = '';
+    
+    p.opcoes.forEach((opcao, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-opcao';
+        btn.textContent = opcao;
+        btn.addEventListener('click', () => responderQuiz(index, btn));
+        opcoesDiv.appendChild(btn);
+    });
+}
+
+function responderQuiz(index, btn) {
+    const p = perguntasQuiz[perguntaAtual];
+    
+    if (index === p.correta) {
+        btn.classList.add('correta');
+        document.getElementById('quizResultado').textContent = '✅ Correto! ❤️';
+        
+        setTimeout(() => {
+            perguntaAtual++;
+            document.getElementById('quizResultado').textContent = '';
+            mostrarPergunta();
+        }, 1000);
+    } else {
+        btn.classList.add('errada');
+        document.getElementById('quizResultado').textContent = '❌ Tente novamente!';
+        
+        setTimeout(() => {
+            btn.classList.remove('errada');
+        }, 800);
+    }
+}
+
+function reiniciarQuiz() {
+    iniciarQuiz();
+}
+
+iniciarQuiz();
+
+/* =========================================================
+   CAÇA-PALAVRAS
+========================================================= */
+const palavrasCaca = ['AMOR', 'CAMILA', 'FATIMA', 'DEUS', 'FE', 'FAMILIA'];
+const tamanhoGrid = 8;
+let gridCaca = [];
+let selecaoCaca = [];
+let palavrasEncontradas = [];
+
+function iniciarCaca() {
+    gridCaca = Array(tamanhoGrid).fill(null).map(() => Array(tamanhoGrid).fill(''));
+    
+    palavrasCaca.forEach(palavra => {
+        let colocada = false;
+        let tentativas = 0;
+        
+        while (!colocada && tentativas < 100) {
+            const linha = Math.floor(Math.random() * tamanhoGrid);
+            const colunaInicio = Math.floor(Math.random() * (tamanhoGrid - palavra.length + 1));
+            
+            let cabe = true;
+            for (let i = 0; i < palavra.length; i++) {
+                if (gridCaca[linha][colunaInicio + i] !== '') {
+                    cabe = false;
+                    break;
+                }
+            }
+            
+            if (cabe) {
+                for (let i = 0; i < palavra.length; i++) {
+                    gridCaca[linha][colunaInicio + i] = palavra[i];
+                }
+                colocada = true;
+            }
+            tentativas++;
+        }
+    });
+    
+    const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for (let i = 0; i < tamanhoGrid; i++) {
+        for (let j = 0; j < tamanhoGrid; j++) {
+            if (gridCaca[i][j] === '') {
+                gridCaca[i][j] = letras[Math.floor(Math.random() * letras.length)];
+            }
+        }
+    }
+    
+    selecaoCaca = [];
+    palavrasEncontradas = [];
+    renderizarCaca();
+}
+
+function renderizarCaca() {
+    const gridDiv = document.getElementById('cacaGrid');
+    gridDiv.innerHTML = '';
+    
+    for (let i = 0; i < tamanhoGrid; i++) {
+        for (let j = 0; j < tamanhoGrid; j++) {
+            const celula = document.createElement('div');
+            celula.className = 'caca-celula';
+            celula.textContent = gridCaca[i][j];
+            celula.dataset.linha = i;
+            celula.dataset.coluna = j;
+            celula.addEventListener('click', () => clicarCelula(i, j, celula));
+            gridDiv.appendChild(celula);
+        }
+    }
+    
+    atualizarListaCaca();
+}
+
+function clicarCelula(linha, coluna, celula) {
+    if (palavrasEncontradas.includes(gridCaca[linha][coluna])) return;
+    
+    celula.classList.toggle('selecionada');
+    
+    const index = selecaoCaca.findIndex(s => s.linha === linha && s.coluna === coluna);
+    if (index === -1) {
+        selecaoCaca.push({ linha, coluna, celula, letra: gridCaca[linha][coluna] });
+    } else {
+        selecaoCaca.splice(index, 1);
+    }
+    
+    verificarPalavra();
+}
+
+function verificarPalavra() {
+    if (selecaoCaca.length < 2) return;
+    
+    const mesmaLinha = selecaoCaca.every(s => s.linha === selecaoCaca[0].linha);
+    
+    if (mesmaLinha) {
+        selecaoCaca.sort((a, b) => a.coluna - b.coluna);
+        
+        let consecutivas = true;
+        for (let i = 1; i < selecaoCaca.length; i++) {
+            if (selecaoCaca[i].coluna !== selecaoCaca[i-1].coluna + 1) {
+                consecutivas = false;
+                break;
+            }
+        }
+        
+        if (consecutivas) {
+            const palavra = selecaoCaca.map(s => s.letra).join('');
+            
+            if (palavrasCaca.includes(palavra) && !palavrasEncontradas.includes(palavra)) {
+                palavrasEncontradas.push(palavra);
+                selecaoCaca.forEach(s => {
+                    s.celula.classList.remove('selecionada');
+                    s.celula.classList.add('encontrada');
+                });
+                selecaoCaca = [];
+                atualizarListaCaca();
+                
+                if (palavrasEncontradas.length === palavrasCaca.length) {
+                    setTimeout(() => {
+                        alert('🎉 Parabéns! Você encontrou todas as palavras! ❤️');
+                    }, 500);
+                }
+            }
+        }
+    }
+}
+
+function atualizarListaCaca() {
+    const listaDiv = document.getElementById('cacaLista');
+    listaDiv.innerHTML = palavrasCaca.map(p => 
+        `<span class="${palavrasEncontradas.includes(p) ? 'riscada' : ''}">${p}</span>`
+    ).join('');
+}
+
+function reiniciarCaca() {
+    iniciarCaca();
+}
+
+iniciarCaca();
+
+/* =========================================================
+   JOGO DA FORCA
+========================================================= */
+const palavrasForca = [
+    { palavra: 'CAMILA', dica: 'O nome da nossa filha' },
+    { palavra: 'FATIMA', dica: 'Nossa Senhora da peregrinação' },
+    { palavra: 'AMOR', dica: 'O que sentimos um pelo outro' },
+    { palavra: 'DEUS', dica: 'Quem abençoou a nossa união' },
+    { palavra: 'FAMILIA', dica: 'O que construímos juntos' },
+    { palavra: 'CATEQUESE', dica: 'Onde tudo começou' }
+];
+
+let forcaPalavraAtual = '';
+let forcaDicaAtual = '';
+let forcaLetrasUsadas = [];
+let forcaErros = 0;
+const maxErrosForca = 6;
+
+function iniciarForca() {
+    const sorteada = palavrasForca[Math.floor(Math.random() * palavrasForca.length)];
+    forcaPalavraAtual = sorteada.palavra;
+    forcaDicaAtual = sorteada.dica;
+    forcaLetrasUsadas = [];
+    forcaErros = 0;
+    
+    document.getElementById('forcaDica').textContent = `💡 Dica: ${forcaDicaAtual}`;
+    document.getElementById('forcaStatus').textContent = `Erros: 0/${maxErrosForca}`;
+    
+    atualizarDesenhoForca();
+    renderizarLetrasForca();
+}
+
+function atualizarDesenhoForca() {
+    const desenho = document.getElementById('forcaDesenho');
+    desenho.textContent = forcaPalavraAtual.split('').map(letra => 
+        forcaLetrasUsadas.includes(letra) ? letra : '_'
+    ).join(' ');
+    
+    // Verificar vitória
+    if (forcaPalavraAtual.split('').every(letra => forcaLetrasUsadas.includes(letra))) {
+        document.getElementById('forcaStatus').textContent = '🎉 Parabéns! Você acertou! ❤️';
+        document.querySelectorAll('.forca-letra').forEach(btn => btn.classList.add('usada'));
+    }
+}
+
+function renderizarLetrasForca() {
+    const container = document.getElementById('forcaLetras');
+    container.innerHTML = '';
+    
+    const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    alfabeto.split('').forEach(letra => {
+        const btn = document.createElement('button');
+        btn.className = 'forca-letra';
+        btn.textContent = letra;
+        btn.dataset.letra = letra;
+        btn.addEventListener('click', () => tentarLetraForca(letra, btn));
+        container.appendChild(btn);
+    });
+}
+
+function tentarLetraForca(letra, btn) {
+    if (forcaLetrasUsadas.includes(letra) || forcaErros >= maxErrosForca) return;
+    
+    btn.classList.add('usada');
+    forcaLetrasUsadas.push(letra);
+    
+    if (forcaPalavraAtual.includes(letra)) {
+        btn.classList.add('correta');
+        atualizarDesenhoForca();
+    } else {
+        btn.classList.add('errada');
+        forcaErros++;
+        document.getElementById('forcaStatus').textContent = `Erros: ${forcaErros}/${maxErrosForca}`;
+        
+        if (forcaErros >= maxErrosForca) {
+            document.getElementById('forcaDesenho').textContent = forcaPalavraAtual;
+            document.getElementById('forcaStatus').textContent = `😢 Fim de jogo! A palavra era: ${forcaPalavraAtual}`;
+            document.querySelectorAll('.forca-letra').forEach(b => b.classList.add('usada'));
+        }
+    }
+    
+    atualizarDesenhoForca();
+}
+
+function reiniciarForca() {
+    iniciarForca();
+}
+
+iniciarForca();
+
+/* =========================================================
+   QUEBRA-CABEÇA
+========================================================= */
+const imagemPuzzle = 'foto15.jpg'; // Troque pela foto que quiser
+let puzzlePecas = [];
+let puzzleSelecionada = null;
+
+function iniciarPuzzle() {
+    // Criar peças numeradas 0-8
+    puzzlePecas = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    
+    // Embaralhar
+    for (let i = puzzlePecas.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [puzzlePecas[i], puzzlePecas[j]] = [puzzlePecas[j], puzzlePecas[i]];
+    }
+    
+    puzzleSelecionada = null;
+    renderizarPuzzle();
+    document.getElementById('puzzleStatus').textContent = 'Clique nas peças para trocar de posição';
+}
+
+function renderizarPuzzle() {
+    const grid = document.getElementById('puzzleGrid');
+    grid.innerHTML = '';
+    
+    puzzlePecas.forEach((pecaId, index) => {
+        const peca = document.createElement('div');
+        peca.className = 'puzzle-peca';
+        peca.dataset.index = index;
+        peca.dataset.peca = pecaId;
+        
+        // Calcular posição da peça na imagem original (3x3)
+        const linha = Math.floor(pecaId / 3);
+        const coluna = pecaId % 3;
+        
+        const posX = (coluna / 2) * 100;
+        const posY = (linha / 2) * 100;
+        
+        peca.style.backgroundImage = `url('${imagemPuzzle}')`;
+        peca.style.backgroundPosition = `${posX}% ${posY}%`;
+        peca.style.backgroundSize = '300% 300%';
+        
+        peca.addEventListener('click', () => clicarPecaPuzzle(index, peca));
+        grid.appendChild(peca);
+    });
+    
+    verificarPuzzleCompleto();
+}
+
+function clicarPecaPuzzle(index, peca) {
+    if (puzzleSelecionada === null) {
+        // Selecionar primeira peça
+        puzzleSelecionada = index;
+        peca.classList.add('selecionada');
+    } else if (puzzleSelecionada === index) {
+        // Desmarcar
+        puzzleSelecionada = null;
+        peca.classList.remove('selecionada');
+    } else {
+        // Trocar peças
+        const index1 = puzzleSelecionada;
+        const index2 = index;
+        
+        [puzzlePecas[index1], puzzlePecas[index2]] = [puzzlePecas[index2], puzzlePecas[index1]];
+        
+        puzzleSelecionada = null;
+        renderizarPuzzle();
+    }
+}
+
+function verificarPuzzleCompleto() {
+    const completo = puzzlePecas.every((peca, index) => peca === index);
+    
+    if (completo) {
+        setTimeout(() => {
+            document.getElementById('puzzleStatus').textContent = '🎉 Parabéns! Você completou o quebra-cabeça! ❤️';
+            alert('🎉 Parabéns! Você completou o quebra-cabeça! ❤️');
+        }, 300);
+    }
+}
+
+function reiniciarPuzzle() {
+    iniciarPuzzle();
+}
+
+iniciarPuzzle();
+</script>
+
+</body>
+</html>
